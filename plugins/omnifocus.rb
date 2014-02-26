@@ -64,7 +64,8 @@ class OmniFocusLogger < Slogger
     end
     
     until $i >= days  do
-      currentDate = Time.now - ((60 * 60 * 24) * $i)
+      #currentDate = Time.now - ((60 * 60 * 24) * $i)
+      currentDate = Time.now - ((60 * 60 * 24) * ($i+1))
       timestring = currentDate.strftime('%d/%m/%Y')
       
       if developMode
