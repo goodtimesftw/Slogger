@@ -116,8 +116,18 @@ class PinboardLogger < Slogger
       dated_marks.each {|k,v|
         content = "## Pinboard bookmarks\n\n### #{feed_link} on #{Time.parse(k).strftime(@date_format)}\n\n"
         content << digest_entry(v, tags)
-        sl.to_dayone({'content' => content, 'datestamp' => Time.parse(k).utc.iso8601})
+        sl.to_dayone({'content' => content, 'datestamp' => format_date_stamp(k)})
       }
     end
+  end
+
+  def format_date_stamp(date)
+    date_stamp = Time.parse(date)
+
+    if date_stamp == Date.today.to_time
+      date_stamp = Time.now
+    end
+
+    date_stamp.utc.iso8601
   end
 end
