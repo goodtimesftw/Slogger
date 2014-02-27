@@ -5,6 +5,7 @@ gem 'fitgem'
 gem 'twitter', '~> 5.3.0'
 gem 'twitter_oauth'
 gem 'json'
+gem 'pry'
 
 group :test do
   gem 'rake'
